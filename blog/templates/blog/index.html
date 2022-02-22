@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}" />
     <link rel="stylesheet" href="{% static 'blog/index.css' %}" />
 {% endblock %}
 {% block content %}
@@ -23,17 +24,9 @@
         <h2>My Latest Thoughts</h2>
 
         <ul>
-            <li>
-                <article class="post">
-                    <a href="">
-                        <img src="{% static "blog/images/mountains.jpg" %}" alt="Trail Running" />
-                        <div class="post__content">
-                            <h3>Trail Runs</h3>
-                            <p> There's nothing like trail running in Western NC! I was not prepared for what I saw!</p>
-                        </div>
-                    </a>
-                </article>
-            </li>
+            {% for post in posts %}
+                {% include "blog/includes/post.html"%}
+            {% endfor %}
         </ul>
     </section>
 
@@ -46,4 +39,5 @@
             My goal is to grow as a developer and support my family.
         </p>
     </section>
+
 {% endblock %}
